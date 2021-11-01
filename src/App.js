@@ -10,6 +10,7 @@ function App() {
       password: ''
     },
     onSubmit: values =>{
+      alert('Login Successful');
       console.log('form:', values);
     },
     validate: values =>{
@@ -25,14 +26,9 @@ function App() {
     }
   });
 
-  //currently this works whenever Submit is clicked... it should only popup when Submit is clicked after passing the validations, but I can't figure that out
-  function handleSubmit(values) {
-   alert('Login Successful');
-  }
-
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={formik.handleSubmit}>
       <div>Email</div>
         <input name="email" type="text" onChange={formik.handleChange} value={formik.values.name}/>
         {formik.errors.email ? <div id="emailError" style={{color:'red'}}>{formik.errors.email}</div>: null}
